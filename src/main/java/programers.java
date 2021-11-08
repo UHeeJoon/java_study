@@ -1,3 +1,66 @@
+class Solution {
+    public int[][] solution(int[][] arr1, int[][] arr2) {
+        int[][] answer = new int [arr1.length][arr1[0].length];
+        for(int i = 0 ; i < arr1.length; i++){
+            for(int j=0;j<arr1[i].length;j++){
+                answer[i][j] = arr1[i][j]+arr2[i][j];
+            }
+        }
+        return answer;
+    }
+    public static void main(String[] args) {
+        Solution Solution = new Solution();
+        int[][] arr1 = {
+                {1,2},
+                {2,3}
+        };
+        int[][] arr2 = {
+                {3,4},
+                {5,6}
+        };
+        System.out.println(Solution.solution(arr1,arr2));
+    }
+}
+
+
+
+//// 핸드폰 번호 가리기
+//class Solution {
+//    public String solution(String phone_number) {
+//        char[] arr = phone_number.toCharArray();
+//        for(int i =0 ; i < arr.length -4; i++)
+//            arr[i] = '*';
+//        String answer = new String(arr);
+//        return answer;
+//    }
+//
+//    public static void main(String[] args) {
+//        Solution Solution = new Solution();
+//        String a = "15213400";
+//        System.out.println(Solution.solution(a));
+//
+//    }
+//}
+//// 다른 사람들 코드
+//class Solution {
+//    public String solution(String phone_number) {
+//        String answer = "";
+//
+//        for (int i = 0; i < phone_number.length() - 4; i++)
+//            answer += "*";
+//
+//        answer += phone_number.substring(phone_number.length() - 4);
+//
+//        return answer;
+//    }
+//}
+//
+//class Solution {
+//    public String solution(String phone_number) {
+//        return phone_number.replaceAll(".(?=.{4})", "*");
+//    }
+//}
+
 
 //하샤드 수
 //class Solution {
@@ -39,13 +102,6 @@
 //        return x % sum == 0;
 //    }
 //}
-
-
-
-
-
-
-
 
 
 //// 정수 내림차순으로 배치하기
@@ -109,12 +165,6 @@
 //    }
 
 
-
-
-
-
-
-
 //import java.util.Arrays;    // 프로그래머스 완주하지 못한 선수
 //class Solution {
 //    public String solution(String[] participant, String[] completion) {
@@ -154,11 +204,6 @@
 //}
 
 
-
-
-
-
-
 // 프로그래머스 문자열 내 p와 y의 개수
 // class Solution {
 //    boolean solution(String s) {
@@ -183,11 +228,6 @@
 //        System.out.println(Solution.solution(a));
 //    }
 //}
-
-
-
-
-
 
 
 //// 프로그래머스 부족한 금액 계산하기
