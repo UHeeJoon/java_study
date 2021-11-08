@@ -32,6 +32,7 @@
 //        System.out.println(sn.isHarshad(18));
 //    }
 //}
+
 //class Solution {
 //    public boolean solution(int x) {
 //        int sum = String.valueOf(x).chars().map(ch -> ch - '0').sum();
