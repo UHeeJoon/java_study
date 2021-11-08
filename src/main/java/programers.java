@@ -45,6 +45,9 @@
 
 
 
+
+
+
 //// 정수 내림차순으로 배치하기
 //class Solution {
 //    public long solution(long n) {
@@ -107,6 +110,11 @@
 
 
 
+
+
+
+
+
 //import java.util.Arrays;    // 프로그래머스 완주하지 못한 선수
 //class Solution {
 //    public String solution(String[] participant, String[] completion) {
@@ -146,6 +154,11 @@
 //}
 
 
+
+
+
+
+
 // 프로그래머스 문자열 내 p와 y의 개수
 // class Solution {
 //    boolean solution(String s) {
@@ -170,6 +183,10 @@
 //        System.out.println(Solution.solution(a));
 //    }
 //}
+
+
+
+
 
 
 
@@ -200,6 +217,10 @@
 
 
 
+
+
+
+
 /*
 // 프로그래머스 배열 평균 구하기
 // 내가 한 풀이
@@ -222,7 +243,6 @@ public class GetMean {
     }
 }
 
-
                             // stream 한줄 표현
 public class GetMean {
     public int getMean(int[] array) {
@@ -243,6 +263,8 @@ public class GetMean {
     }
 
 */
+
+
 
 
 
