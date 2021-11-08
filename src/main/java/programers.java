@@ -8,7 +8,6 @@ class Solution {
         }
         return answer;
     }
-
     public static void main(String[] args) {
         Solution Solution = new Solution();
         int[][] arr1 = {
@@ -20,7 +19,6 @@ class Solution {
                 {5,6}
         };
         System.out.println(Solution.solution(arr1,arr2));
-
     }
 }
 
