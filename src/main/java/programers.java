@@ -1,4 +1,4 @@
-class Solution {
+class Solution { // 행열의 합
     public int[][] solution(int[][] arr1, int[][] arr2) {
         int[][] answer = new int [arr1.length][arr1[0].length];
         for(int i = 0 ; i < arr1.length; i++){
@@ -18,12 +18,12 @@ class Solution {
                 {3,4},
                 {5,6}
         };
-        System.out.println(Solution.solution(arr1,arr2));
+        System.out.println();
     }
 }
 
 
-
+/*
 //// 핸드폰 번호 가리기
 //class Solution {
 //    public String solution(String phone_number) {
@@ -219,7 +219,7 @@ class Solution {
 //
 //        return s.chars().filter( e -> 'P'== e).count() == s.chars().filter( e -> 'Y'== e).count();
 //    }
-//    */
+//
 //
 //
 //    public static void main(String[] args) {
@@ -246,7 +246,7 @@ class Solution {
 //     public long solution(long price, long money, long count) {
 //        return Math.max(price * (count * (count + 1) / 2) - money, 0);
 //    }
-//    */
+//
 //    public static void main(String[] args) {
 //        Solution Solution = new Solution();
 //        int price = 1, money = 1, count = 1;
@@ -302,7 +302,7 @@ public class GetMean {
           return mean;
     }
 
-*/
+
 
 
 
@@ -342,5 +342,6 @@ class StringExercise{
 
       return word != null ? word.substring((word.length()-1)/2,(word.length()+2)/2) : "";
     }
-*/
 
+
+*/
