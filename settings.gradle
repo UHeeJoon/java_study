@@ -1,3 +1,4 @@
 rootProject.name = 'sparta_java'
 include 'java2'
+include 'java3'
 
