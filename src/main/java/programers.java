@@ -1,21 +1,336 @@
 class Solution {
-    public int solution(int num) {
-        for(int count = 0 ; num==1;count++) {
-            if(num == 1) return count;
-            if (num % 2 == 0) num = num / 2;
-            else num = num * 3 + 1;
-            if(count >= 500) break;
-        }
-        return -1;
-    }
+    public int solution(int[] nums) {
+        int answer = -1;
 
+        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+        System.out.println("Hello Java");
+
+        return answer;
+    }
     public static void main(String[] args) {
         Solution Solution = new Solution();
-        int[] a = {5, 9, 7, 10};
-        String ab = "asd sdf fff d";
-        System.out.println(Solution.solution(16));
+        int[] a = {2, 1, 3, 4, 1}, b = {31, 10, 45, 1, 6, 19};
+        String ab = "zzzZ Sdf fff d";
+        int[][] aa = {{60, 50}, {30, 70}, {60, 30}, {80, 40}};
+        System.out.println(Solution.solution(a));
     }
 }
+
+//// 두 개 뽑아서 더하기
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.*;
+//class Solution {
+//    public int[] solution(int[] numbers) {
+//        ArrayList<Integer>list = new ArrayList<>();
+//        Arrays.sort(numbers);
+//        for(int i = 0 ; i < numbers.length; i++)
+//            System.out.println(numbers[i]);
+//        for(int i =0 ; i < numbers.length -1 ;i++)
+//            for (int j = i + 1; j < numbers.length; j++)
+//                list.add(numbers[j] + numbers[i]);
+//        Collections.sort(list);
+//        int[] answer = list.stream().mapToInt(i->i).toArray();
+//        return set(answer);
+//    }
+//    public int[] set(int[] arr){
+//        int[] answer ;
+//            int count = 1;
+//            for(int i=1; i<arr.length; i++){
+//                if(arr[i-1] != arr[i])
+//                    count++;
+//            }
+//            answer = new int[count];
+//            count=1;
+//            answer[0] = arr[0];
+//            for(int i=1; i<arr.length; i++){
+//                if(arr[i-1] != arr[i]){
+//                    answer[count] = arr[i];
+//                    count++;
+//                }
+//            }
+//            return answer;
+//    }
+//    // 다른사람이 품
+//    import java.util.Iterator;
+//    import java.util.Set;
+//    import java.util.TreeSet;
+//
+//    class Solution {
+//        public int[] solution(int[] numbers) {
+//            Set<Integer> sumNumber = new TreeSet();
+//
+//            for(int i = 0; i < numbers.length-1; i++){
+//                for(int j = i+1; j < numbers.length; j++){
+//                    sumNumber.add(numbers[i] + numbers[j]);
+//                }
+//            }
+//
+//            int[] answer = new int[sumNumber.size()];
+//            int index = 0;
+//            Iterator itor = sumNumber.iterator();
+//            while(itor.hasNext()){
+//                answer[index] = (int)itor.next();
+//                index++;
+//            }
+//
+//            return answer;
+//        }
+//    }
+//
+//}
+
+//// 같은 숫자는 싫어
+//import java.util.*;
+//class Solution {
+//    public int[] solution(int[] arr) {
+//        ArrayList<Integer> list = new ArrayList<>();
+//        int current = 10;
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] != current) {
+//                list.add(arr[i]);
+//                current = arr[i];
+//            }
+//        }
+//        int[] answer = new int[list.size()];
+//        for (int i = 0; i < list.size(); i++)
+//            answer[i] = list.get(i);
+//        return answer;
+//    }
+//    // 다른 사람 풀이
+//    public class Solution {
+//        public int[] solution(int []arr) {
+//            int[] answer ;
+//            int count = 1;
+//            for(int i=1; i<arr.length; i++){
+//                if(arr[i-1] != arr[i])
+//                    count++;
+//            }
+//            answer = new int[count];
+//            count=1;
+//            answer[0] = arr[0];
+//            for(int i=1; i<arr.length; i++){
+//                if(arr[i-1] != arr[i]){
+//                    answer[count] = arr[i];
+//                    count++;
+//                }
+//            }
+//            return answer;
+//        }
+//    }
+//}
+
+
+//// 진법 뒤집기
+//class Solution {
+//    public int solution(int n) {
+//        int answer = 0, count = 0;
+//        int[] th = new int[100];
+//        for (int i = 0; n > 0; i++) {
+//            th[i] = n % 3;
+//            n = (n - th[i]) / 3;
+//            count+=1;
+//        }
+//        for (int i = count; i > 0; i--)
+//            answer += th[i-1]*Math.pow(3,count-i);
+//        return answer;
+//    }
+//
+//    // 다른사람 풀이
+//    public int solution(int n) {
+//        String a = "";
+//        while(n > 0){
+//            a =a+ (n % 3);
+//            n /= 3;
+//        }
+//        return Integer.parseInt(a,3);
+//    }
+//}
+//
+//// 시저 암호
+//class Solution {
+//    public String solution(String s, int n) {
+//        String answer ="";
+//        char[] word = s.toCharArray();
+//        for( char wd : word){
+//            if((96<wd && wd<123) && wd+n>'z') {
+//                answer += (char) ('a' + wd + n - 123);
+//                continue;
+//            }
+//            if((64<wd &&wd<91 )&& wd+n>90) {
+//                answer += (char) ('A' + wd + n - 91);
+//                continue;
+//            }
+//            if(wd == ' ')
+//                answer += " ";
+//            else
+//                answer += (char) (wd + n);
+//
+//        }
+//        return answer;
+//    }
+//    //다른 사람 풀이
+//    String caesar(String s, int n) {
+//        String result = "";
+//        n = n % 26;
+//        for (int i = 0; i < s.length(); i++) {
+//            char ch = s.charAt(i);
+//            if (Character.isLowerCase(ch)) {
+//                ch = (char) ((ch - 'a' + n) % 26 + 'a');
+//            } else if (Character.isUpperCase(ch)) {
+//                ch = (char) ((ch - 'A' + n) % 26 + 'A');
+//            }
+//            result += ch;
+//        }
+//        return result;
+//    }
+//
+//}
+
+// 로또의 최고 순위와 최저 순위
+//class Solution {
+//    public int[] solution(int[] lottos, int[] win_nums) {
+//        int[] answer = {};
+//        int count = 0, zero = 0;
+//        for (int i = 0; i < lottos.length; i++) {
+//            if (lottos[i] == 0) {
+//                count += 1;
+//                zero += 1;
+//            } else {
+//                for (int j = 0; j < lottos.length; j++)
+//                    if (lottos[i] == win_nums[j])
+//                        count += 1;
+//            }
+//
+//        }
+//        zero = count - zero;
+//        answer = new int[]{count, zero};
+//        for (int i = 0; answer.length > i; i++) {
+//            if (answer[i] == 6) answer[i] = 1;
+//            else if (answer[i] == 5) answer[i] = 2;
+//            else if (answer[i] == 4) answer[i] = 3;
+//            else if (answer[i] == 3) answer[i] = 4;
+//            else if (answer[i] == 2) answer[i] = 5;
+//            else answer[i] = 6;
+//        }
+//        return answer;
+//    }
+//    // 다른 사람 풀이
+//    import java.util.HashMap;
+//    import java.util.Map;
+//    public int[] solution(int[] lottos, int[] win_nums) {
+//        Map<Integer, Boolean> map = new HashMap<Integer, Boolean>();
+//        int zeroCount = 0;
+//
+//        for (int lotto : lottos) {
+//            if (lotto == 0) {
+//                zeroCount++;
+//                continue;
+//            }
+//            map.put(lotto, true);
+//        }
+//
+//
+//        int sameCount = 0;
+//        for (int winNum : win_nums) {
+//            if (map.containsKey(winNum)) sameCount++;
+//        }
+//
+//        int maxRank = 7 - (sameCount + zeroCount);
+//        int minRank = 7 - sameCount;
+//        if (maxRank > 6) maxRank = 6;
+//        if (minRank > 6) minRank = 6;
+//
+//        return new int[]{maxRank, minRank};
+//    }
+//
+//    public int[] solution(int[] lottos, int[] win_nums) {
+//        int zero = 0;
+//        int matched = 0;
+//        for (int l : lottos) {
+//            if (l == 0) {
+//                zero++;
+//            } else {
+//                for (int w : win_nums) {
+//                    if (l == w) {
+//                        matched++;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//        int min = matched;
+//        int max = matched + zero;
+//        int[] answer = {Math.min(7 - max, 6), Math.min(7 - min, 6)};
+//        return answer;
+//    }
+//
+//}
+
+//// 최소직사각형
+//class Solution {
+//    public int solution(int[][] sizes) {
+//        int  temp = 0;
+//        for(int i =0 ; i<sizes.length;i++){
+//            if(sizes[i][0]<sizes[i][1]){
+//                temp = sizes[i][0];
+//                sizes[i][0] = sizes[i][1];
+//                sizes[i][1] = temp;
+//            }
+//        }
+//        int r_num = sizes[0][0], c_num = sizes[0][1];
+//        for(int i =0;i<sizes.length;i++){
+//            if(r_num < sizes[i][0])
+//                r_num = sizes[i][0];
+//            if(c_num < sizes[i][1])
+//                c_num = sizes[i][1];
+//        }
+//        return r_num*c_num;
+//    }
+//    // 다른사람 풀이
+//    public int solution(int[][] sizes) {
+//        return Arrays.stream(sizes).reduce((a, b) -> new int[]{
+//                Math.max(Math.max(a[0], a[1]), Math.max(b[0], b[1])), Math.max(Math.min(a[0], a[1]), Math.min(b[0], b[1]))
+//        }).map(it -> it[0] * it[1]).get();
+//    }
+//    public int solution(int[][] sizes) {
+//        int length = 0, height = 0;
+//        for (int[] card : sizes) {
+//            length = Math.max(length, Math.max(card[0], card[1]));
+//            height = Math.max(height, Math.min(card[0], card[1]));
+//        }
+//        int answer = length * height;
+//        return answer;
+//    }
+//}
+
+//// 콜라츠 추측
+//class Solution {
+//    public long solution(long num) {
+//        for(int count = 0 ; ;count++) {
+//            if(num == 1)
+//                return count;
+//            if (num % 2 == 0)
+//                num = num / 2;
+//            else
+//                num = num * 3 + 1;
+//            if(count >= 500)
+//                break;
+//        }
+//
+//        return -1;
+//    }
+//    // 다른 사람 풀이
+//    public int collatz(int num) {
+//        long n = (long)num;
+//        for(int i =0; i<500; i++){
+//            if(n==1) return i;
+//            n = (n%2==0) ? n/2 : n*3+1;
+//        }
+//        return -1;
+//    }
+//
+//}
 
 //// 제일작은 수 하나 제거하기
 //class Solution {
@@ -51,13 +366,6 @@ class Solution {
 ////            return Arrays.stream(arr).filter(i -> i != min).toArray();
 ////        }
 ////    }
-//
-//    public static void main(String[] args) {
-//        Solution Solution = new Solution();
-//        int[] a = {5, 9, 7, 10};
-//        String ab = "asd sdf fff d";
-//        System.out.println(Solution.solution(a));
-//    }
 //}
 
 
@@ -75,12 +383,6 @@ class Solution {
 ////            return (long) ((sqrt % 1) == 0 ? (sqrt + 1) * (sqrt + 1) : -1);
 ////        }
 ////    }
-//    public static void main(String[] args) {
-//        Solution Solution = new Solution();
-//        int[] a = {5, 9, 7, 10};
-//        String ab = "asd sdf fff d";
-//        System.out.println(Solution.solution(144L));
-//    }
 //}
 
 /**
@@ -126,12 +428,6 @@ class Solution {
  * //        return answer;
  * //    }
  * }
- * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        int[] a = {5, 9, 7, 10};
- * //        System.out.println(Solution.solution(123456789L));
- * //    }
  * //}
  * <p>
  * <p>
@@ -144,13 +440,6 @@ class Solution {
  * //            n = n/10;
  * //        }
  * //        return answer;
- * //    }
- * //
- * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        int[] a = {5, 9, 7, 10};
- * //        System.out.println(Solution.solution(123));
  * //    }
  * //}
  * //// 이상한 문자 만들기
@@ -181,11 +470,6 @@ class Solution {
  * //        return answer;
  * //    }
  * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        int[] a = {5, 9, 7, 10};
- * //        System.out.println(Solution.solution("abdfff cdsdsd efsssssss sds"));
- * //    }
  * //}
  * //// 다른 사람 풀이
  * //class Solution {
@@ -227,11 +511,6 @@ class Solution {
  * //        }
  * //        else
  * //            return false;
- * //    }
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        int[] a = {5,9,7,10};
- * //        System.out.println(Solution.solution("1234a"));
  * //    }
  * //}
  * //// 다른사람 풀이
@@ -301,12 +580,6 @@ class Solution {
  * //       if(answer.length==0) return new int[]{-1};
  * //       else return answer;
  * //    }
- * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        int[] a = {5,9,7,10};
- * //        System.out.println(Solution.solution(a, 25));
- * //    }
  * //}
  * <p>
  * //// 2016년
@@ -319,12 +592,6 @@ class Solution {
  * //            sum+=month[i];
  * //        String answer = day[sum%7];
  * //        return answer;
- * //    }
- * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //
- * //        System.out.println(Solution.solution(5, 24));
  * //    }
  * //}
  * //
@@ -350,11 +617,6 @@ class Solution {
  * //        return answer;
  * //    }
  * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        String[] seoul = {"Jane", "Kim"};
- * //        System.out.println(Solution.solution(seoul));
- * //    }
  * //}
  * ////다른사람 풀이
  * //import java.util.Arrays;
@@ -380,18 +642,6 @@ class Solution {
  * //        }
  * //        return answer;
  * //    }
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        int[][] arr1 = {
- * //                {1,2},
- * //                {2,3}
- * //        };
- * //        int[][] arr2 = {
- * //                {3,4},
- * //                {5,6}
- * //        };
- * //        System.out.println(Arrays.deepToString(Solution.solution(arr1, arr2)));
- * //    }
  * //}
  * <p>
  * <p>
@@ -406,12 +656,6 @@ class Solution {
  * //        return answer;
  * //    }
  * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        String a = "15213400";
- * //        System.out.println(Solution.solution(a));
- * //
- * //    }
  * //}
  * //// 다른 사람들 코드
  * //class Solution {
@@ -444,11 +688,6 @@ class Solution {
  * //        return x%sum==0? true: false;
  * //    }
  * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        int a = 15400;
- * //        System.out.println(Solution.solution(a));
- * //    }
  * //}
  * //다른 사람이 품
  * //import java.util.function.IntConsumer;
@@ -501,11 +740,6 @@ class Solution {
  * //        return answer;
  * //    }
  * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        long a = 81258735L;
- * //        System.out.println(Solution.solution(a));
- * //    }
  * //}
  * // 다른 사람들이 품
  * //    public int reverseInt(int n){
@@ -549,12 +783,6 @@ class Solution {
  * //       return participant[i];
  * //    }
  * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        String[] a = new String[] {"leo", "kiki", "eden"};
- * //        String[] b = new String[] {"eden", "kiki"};
- * //        System.out.println(Solution.solution(a,b));
- * //    }
  * //}
  * //  다른 사람이 품
  * //import java.util.HashMap;
@@ -594,11 +822,6 @@ class Solution {
  * //
  * //
  * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        String a = "PYy";
- * //        System.out.println(Solution.solution(a));
- * //    }
  * //}
  * <p>
  * <p>
@@ -619,11 +842,6 @@ class Solution {
  * //        return Math.max(price * (count * (count + 1) / 2) - money, 0);
  * //    }
  * //
- * //    public static void main(String[] args) {
- * //        Solution Solution = new Solution();
- * //        int price = 1, money = 1, count = 1;
- * //        System.out.println(Solution.solution(price, money, count));
- * //    }
  * //}
  * <p>
  * /*
@@ -680,11 +898,6 @@ class Solution {
  * return answer;
  * }
  * <p>
- * public static void main(String[] args) {
- * Solution Solution = new Solution();
- * String a = "asdfg";
- * System.out.println(Solution.solution(a));
- * }
  * }
  * // 다른사람 풀이 .. 조건문 없이 한줄 풀이
  * <p>
