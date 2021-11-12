@@ -1,37 +1,301 @@
+import java.util.*;
 class Solution {
-    public int solution(String s) {
-        int answer = 0;
+    public String solution(String new_id) {
+        String answer;
+
+        // 1단계
+        String step1 = new_id.toLowerCase();
+
+        // 2단계
+        char[] step1_arr = step1.toCharArray();
+        StringBuilder step2 = new StringBuilder();
+        for (char c : step1_arr) {
+            if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '-' || c == '_' || c == '.') {
+                step2.append(c);
+            }
+        }
+
+        // 3단계
+        String step3 = step2.toString().replace("..", ".");
+        while (step3.contains("..")) {
+            step3 = step3.replace("..", ".");
+        }
+
+        // 4단계
+        String step4 = step3;
+        if (step4.length() > 0) {
+            if (step4.charAt(0) == '.') {
+                step4 = step4.substring(1, step4.length());
+            }
+        }
+        if (step4.length() > 0) {
+            if (step4.charAt(step4.length() - 1) == '.') {
+                step4 = step4.substring(0, step4.length() - 1);
+            }
+        }
+
+        // 5단계
+        String step5 = step4;
+        if (step5.equals("")) {
+            step5 = "a";
+        }
+
+        // 6단계
+        String step6 = step5;
+        if (step6.length() >= 16) {
+            step6 = step6.substring(0, 15);
+
+            if (step6.charAt(step6.length() - 1) == '.') {
+                step6 = step6.substring(0, step6.length() - 1);
+            }
+        }
+
+        // 7단계
+        StringBuilder step7 = new StringBuilder(step6);
+        if (step7.length() <= 2) {
+            char last = step7.charAt(step7.length() - 1);
+
+            while (step7.length() < 3) {
+                step7.append(last);
+            }
+        }
+
+        answer = String.valueOf(step7);
         return answer;
     }
+
     public static void main(String[] args) {
         Solution Solution = new Solution();
-        int[] a = {2, 1, 3, 4, 1}, b = {31, 10, 45, 1, 6, 19};
+        int[] a = {1, 2, 3, 4}, b = {31, 10, 45, 1, 6, 19};
         String ab = "onetwothree";
+        String[] list = {"sun", "bed", "car"};
         int[][] aa = {{60, 50}, {30, 70}, {60, 30}, {80, 40}};
         System.out.println(Solution.solution(ab));
     }
 }
+//    public String solution(String new_id) {
+//        String answer = new_id.toLowerCase(); // 1단계
+//
+//        answer = answer.replaceAll("[^-_.a-z0-9]", ""); // 2단계
+//        answer = answer.replaceAll("[.]{2,}", "."); // 3단계
+//        answer = answer.replaceAll("^[.]|[.]$", "");    // 4단계
+//
+//        if (answer.equals("")) {    // 5단계
+//            answer += "a";
+//        }
+//
+//        if (answer.length() >= 16) {     // 6단계
+//            answer = answer.substring(0, 15);
+//            answer = answer.replaceAll("[.]$","");
+//        }
+//
+//        if (answer.length() <= 2) {  // 7단계
+//            while (answer.length() < 3) {
+//                answer += answer.charAt(answer.length()-1);
+//            }
+//        }
+//
+//        return answer;
+//    }
+//    public static void main(String[] args) {
+//        Solution Solution = new Solution();
+//        int[] a = {1,2,3,4}, b = {31, 10, 45, 1, 6, 19};
+//        String ab = "onetwothree";
+//        String[] list = {"sun", "bed", "car"};
+//        int[][] aa = {{60, 50}, {30, 70}, {60, 30}, {80, 40}};
+//        System.out.println(Solution.solution(ab));
+//    }
+//}
+
+//import java.util.*;
+//class Solution {
+//    public  int solution(int[] arr){
+//        int answer = 0;
+//        for(int i = 0 ; i < arr.length-2; i++){
+//            for(int j = i+1 ; j<arr.length-1; j++){
+//                for(int k = j+1; k < arr.length;k++){
+//                    if(isPrime(arr[i]+arr[j]+arr[k])) {
+//                        answer += 1;
+//                    }
+//                }
+//            }
+//        }
+//        return answer;
+//    }
+//
+//    public boolean isPrime(int prime){
+//        for(int i = 2 ; i < prime/2+1; i++)
+//            if(prime % i==0)
+//                return false;
+//        return true;
+//    }
+//    // 다른사람이 짠 소수 판별 함수
+//    public Boolean isPrime(int num){
+//        int cnt = 0;
+//        for(int i = 1; i <= (int)Math.sqrt(num); i ++){
+//            if(num % i == 0) cnt += 1;
+//        }
+//        return cnt == 1;
+//    }
+//}
+
+// 모의고사
+//import java.util.*;
+//class Solution {
+//    public int[] solution(int[] answers) {
+//        ArrayList<Integer> list = new ArrayList<Integer>();
+//        int[] first = {1, 2, 3, 4, 5};
+//        int[] second = {2, 1, 2, 3, 2, 4, 2, 5};       // 규칙들을 배열에 담는다
+//        int[] third = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+//        int[] scores = {0, 0, 0};                 // 세명의 점수를 담을 배열이다
+//
+//        for (int i = 0; i < answers.length; i++) {
+//            if (first[i % 5] == answers[i]) {
+//                scores[0]++;
+//            }
+//            if (second[i % 8] == answers[i]) {
+//                scores[1]++;
+//            }      // 해당 규칙과 일치하면 점수를 증가시키다
+//            if (third[i % 10] == answers[i]) {
+//                scores[2]++;
+//            }
+//        }
+//
+//        int[] arr = new int[scores.length];
+//        for (int i = 0; i < scores.length; i++) {
+//            arr[i] = scores[i];                     // 배열을 하나 복제하고
+//        }
+//        Arrays.sort(arr);                           // 정렬한다.(오름차순으로 정렬되었기에 마지막에 있는 사람이 1등)
+//
+//        for (int i = 0; i < arr.length; i++) {         // 마지막에 있는 점수와 일치하면 그 점수가 있는 배열의 index값을 list에 대입한다
+//            if (scores[i] == arr[2]) {
+//                list.add(i + 1);
+//            }
+//        }
+//
+//        int[] answer = new int[list.size()];
+//        for (int i = 0; i < list.size(); i++) {           // list배열을 int[] 배열로 바꿔 담는다.
+//            answer[i] = list.get(i);
+//        }
+//
+//        return answer;
+//
+//    }
+//
+//    // 다른사람 풀이
+//    import java.util.*;
+//
+//    class Solution {
+//        public static int[] solution(int[] answers) {
+//            int[][] patterns = {
+//                    {1, 2, 3, 4, 5},
+//                    {2, 1, 2, 3, 2, 4, 2, 5},
+//                    {3, 3, 1, 1, 2, 2, 4, 4, 5, 5}
+//            };
+//
+//            int[] hit = new int[3];
+//            for(int i = 0; i < hit.length; i++) {
+//                for(int j = 0; j < answers.length; j++) {
+//                    if(patterns[i][j % patterns[i].length] == answers[j]) hit[i]++;
+//                }
+//            }
+//
+//            int max = Math.max(hit[0], Math.max(hit[1], hit[2]));
+//            List<Integer> list = new ArrayList<>();
+//            for(int i = 0; i < hit.length; i++)
+//                if(max == hit[i]) list.add(i + 1);
+//
+//            int[] answer = new int[list.size()];
+//            int cnt = 0;
+//            for(int num : list)
+//                answer[cnt++] = num;
+//            return answer;
+//        }
+//    }
+//}
+//// 문자열 내 마음대로 정렬하기
+//import java.util.*;
+//class Solution {
+//    public String[] solution(String[] strings, int n) {
+//        String[] answer = {};
+//        ArrayList<String> list = new ArrayList<>();   // 동적 배열 list 선언
+//
+//        for (int i = 0; i < strings.length; i++)
+//            list.add(strings[i].charAt(n) + strings[i]);  // 특정 index n번째의 문자열을 맨 앞으로 가져옴
+//
+//        Collections.sort(list);                           // 새롭게 만든 list 정렬
+//
+//        answer = new String[list.size()];
+//
+//        for (int i = 0; i < list.size(); i++)
+//            answer[i] = list.get(i).substring(1, list.get(i).length()); // 문자열 맨 앞으로 가져왔던 문자를 제외한 문자열열를 answer에 대입
+//
+//        return answer;
+//    }
+//}
+//    // 다른사람 풀이
+//    import java.util.Arrays;
+//    import java.util.Comparator;
+//
+//    class Solution {
+//        public String[] solution(String[] strings, int n) {
+//            Arrays.sort(strings);
+//            Arrays.sort(strings, Comparator.comparing((s) -> s.substring(n, n + 1)));
+//            return strings;
+//        }
+//    }
+//}
+
+// 숫자 문자열과 영단어
+//class Solution {
+//    public int solution(String s) {
+//        int answer = 0;
+//        s = s.replace("zero", "0");
+//        s = s.replace("one", "1");
+//        s = s.replace("two", "2");
+//        s = s.replace("three", "3");
+//        s = s.replace("four", "4");
+//        s = s.replace("five", "5");
+//        s = s.replace("six", "6");
+//        s = s.replace("seven", "7");
+//        s = s.replace("eight", "8");
+//        s = s.replace("nine", "9");
+//        System.out.println(Integer.parseInt(s));
+//        answer = Integer.parseInt(s);
+//        return answer;
+//    }
+//    // 다른사람 풀이
+//    public int solution(String s) {
+//        String[] strArr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+//        for(int i = 0; i < strArr.length; i++) {
+//            s = s.replaceAll(strArr[i], Integer.toString(i));
+//        }
+//        return Integer.parseInt(s);
+//    }
+//
+//}
 
 
 //// 내림차수으로 배치하기
 //class Solution {
 //    public String solution(String s) {
 //        String answer = "";
-//        char list[] = s.toCharArray();
+//        char list[] = s.toCharArray();        // 문자열 s를 char[]로 나눠준다
 //        for(int i = 0 ; i < list.length-1; i++){
-//            char max = list[i];
+//            char max = list[i];               // max에 큰 값이 들어가야할 list[i]를 할당 받는다
 //            for(int j = i+1 ; j < list.length;j++){
-//                if(max<list[j]){
+//                if(max<list[j]){              // max보다 list[j]의 값이 더 크면 list[j] 와 list[i]의 값을 교환한다
 //                    max=list[j];
 //                    list[j] = list[i];
 //                    list[i] = max;
 //                }
 //            }
 //        }
-//        for(int i = 0 ; i<list.length;i++)
-//            System.out.print(list[i]);
+//        for(int i = 0 ; i<list.length;i++)    // 내림차순으로 정렬한 list를 answer에 하나씩 더해서 넣는다
+//            answer += list[i];
 //        return answer;
 //    }
+//}
 //    // 다른사람 풀이
 //    import java.util.Arrays;
 //
@@ -236,19 +500,19 @@ class Solution {
 //        int[] answer = {};
 //        int count = 0, zero = 0;
 //        for (int i = 0; i < lottos.length; i++) {
-//            if (lottos[i] == 0) {
+//            if (lottos[i] == 0) {       // 0이 있으면 맞은걸로 처리,  0의 개수 카운트
 //                count += 1;
 //                zero += 1;
 //            } else {
 //                for (int j = 0; j < lottos.length; j++)
-//                    if (lottos[i] == win_nums[j])
+//                    if (lottos[i] == win_nums[j])       // 숫자가 일치하면 갯수 ++
 //                        count += 1;
 //            }
 //
 //        }
-//        zero = count - zero;
+//        zero = count - zero;                        // 0이 다 틀렸을때를 체크
 //        answer = new int[]{count, zero};
-//        for (int i = 0; answer.length > i; i++) {
+//        for (int i = 0; answer.length > i; i++) {       // 등수 책정
 //            if (answer[i] == 6) answer[i] = 1;
 //            else if (answer[i] == 5) answer[i] = 2;
 //            else if (answer[i] == 4) answer[i] = 3;
@@ -286,7 +550,7 @@ class Solution {
 //
 //        return new int[]{maxRank, minRank};
 //    }
-//
+//    // 다른사람 풀이 2
 //    public int[] solution(int[] lottos, int[] win_nums) {
 //        int zero = 0;
 //        int matched = 0;
