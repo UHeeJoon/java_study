@@ -1,20 +1,65 @@
 class Solution {
-    public int solution(int[] nums) {
-        int answer = -1;
-
-        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-        System.out.println("Hello Java");
-
+    public int solution(String s) {
+        int answer = 0;
         return answer;
     }
     public static void main(String[] args) {
         Solution Solution = new Solution();
         int[] a = {2, 1, 3, 4, 1}, b = {31, 10, 45, 1, 6, 19};
-        String ab = "zzzZ Sdf fff d";
+        String ab = "onetwothree";
         int[][] aa = {{60, 50}, {30, 70}, {60, 30}, {80, 40}};
-        System.out.println(Solution.solution(a));
+        System.out.println(Solution.solution(ab));
     }
 }
+
+
+//// 내림차수으로 배치하기
+//class Solution {
+//    public String solution(String s) {
+//        String answer = "";
+//        char list[] = s.toCharArray();
+//        for(int i = 0 ; i < list.length-1; i++){
+//            char max = list[i];
+//            for(int j = i+1 ; j < list.length;j++){
+//                if(max<list[j]){
+//                    max=list[j];
+//                    list[j] = list[i];
+//                    list[i] = max;
+//                }
+//            }
+//        }
+//        for(int i = 0 ; i<list.length;i++)
+//            System.out.print(list[i]);
+//        return answer;
+//    }
+//    // 다른사람 풀이
+//    import java.util.Arrays;
+//
+//    public class ReverseStr {
+//        public String reverseStr(String str){
+//            char[] sol = str.toCharArray();
+//            Arrays.sort(sol);
+//            return new StringBuilder(new String(sol)).reverse().toString();
+//        }
+//    // 다른사람 풀이 2
+//    import java.util.stream.Stream;
+//    import java.util.stream.Collectors;
+//    import java.util.Comparator;
+//
+//    public class ReverseStr {
+//        public String reverseStr(String str){
+//            return Stream.of(str.split(""))
+//                    .sorted(Comparator.reverseOrder())
+//                    .collect(Collectors.joining());
+//        }
+//    public static void main(String[] args) {
+//        Solution Solution = new Solution();
+//        int[] a = {2, 1, 3, 4, 1}, b = {31, 10, 45, 1, 6, 19};
+//        String ab = "bcZefg";
+//        int[][] aa = {{60, 50}, {30, 70}, {60, 30}, {80, 40}};
+//        System.out.println(Solution.solution(ab));
+//    }
+//}
 
 //// 두 개 뽑아서 더하기
 //import java.util.ArrayList;
@@ -24,8 +69,6 @@ class Solution {
 //    public int[] solution(int[] numbers) {
 //        ArrayList<Integer>list = new ArrayList<>();
 //        Arrays.sort(numbers);
-//        for(int i = 0 ; i < numbers.length; i++)
-//            System.out.println(numbers[i]);
 //        for(int i =0 ; i < numbers.length -1 ;i++)
 //            for (int j = i + 1; j < numbers.length; j++)
 //                list.add(numbers[j] + numbers[i]);
@@ -51,7 +94,7 @@ class Solution {
 //            }
 //            return answer;
 //    }
-//    // 다른사람이 품
+//    // 다른사람 풀이
 //    import java.util.Iterator;
 //    import java.util.Set;
 //    import java.util.TreeSet;
@@ -292,7 +335,7 @@ class Solution {
 //        return Arrays.stream(sizes).reduce((a, b) -> new int[]{
 //                Math.max(Math.max(a[0], a[1]), Math.max(b[0], b[1])), Math.max(Math.min(a[0], a[1]), Math.min(b[0], b[1]))
 //        }).map(it -> it[0] * it[1]).get();
-//    }
+//    } //다른사람 풀이 2
 //    public int solution(int[][] sizes) {
 //        int length = 0, height = 0;
 //        for (int[] card : sizes) {
