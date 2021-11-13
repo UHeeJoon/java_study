@@ -1,78 +1,236 @@
-import java.util.*;
+//class Solution {
+//    public int solution(int n, int[] lost, int[] reserve) {
+//        int answer = 0;
+//        return answer;
+//    }
+//
+//    public static void main(String[] args) {
+//        Solution solution = new Solution();
+//        System.out.println(solution.solution());
+//    }
+//}
+// 항해 99 코딩테스트
 class Solution {
-    public String solution(String new_id) {
-        String answer;
+    static String solution(int number) {
+        String answer = "";
+        int sum = 0;
+        char[] num = Integer.toString(number).toCharArray();    // 받은 number를 char[] 로 치환
 
-        // 1단계
-        String step1 = new_id.toLowerCase();
-
-        // 2단계
-        char[] step1_arr = step1.toCharArray();
-        StringBuilder step2 = new StringBuilder();
-        for (char c : step1_arr) {
-            if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '-' || c == '_' || c == '.') {
-                step2.append(c);
-            }
+        for (int i = num.length - 1; i >= 0; i--) {             // answer에 맨 뒤의 원소와 + 를 함께 더함
+            answer += num[i] + "+";
+            sum += num[i] - '0';                                // char를 연산식에 넣으면 아스키 코드값으로 변하기 때문에 '0'만큼의 아스키 코드 값을 빼준다
         }
 
-        // 3단계
-        String step3 = step2.toString().replace("..", ".");
-        while (step3.contains("..")) {
-            step3 = step3.replace("..", ".");
-        }
+        answer = answer.substring(0, answer.length() - 1) + "=" + sum;      // 마지막에 위치하게된 +를 제거하고 =과 결과값 sum을 더한다. String + int를 하면 int가 자동으로 String으로 바뀐다.
 
-        // 4단계
-        String step4 = step3;
-        if (step4.length() > 0) {
-            if (step4.charAt(0) == '.') {
-                step4 = step4.substring(1, step4.length());
-            }
-        }
-        if (step4.length() > 0) {
-            if (step4.charAt(step4.length() - 1) == '.') {
-                step4 = step4.substring(0, step4.length() - 1);
-            }
-        }
-
-        // 5단계
-        String step5 = step4;
-        if (step5.equals("")) {
-            step5 = "a";
-        }
-
-        // 6단계
-        String step6 = step5;
-        if (step6.length() >= 16) {
-            step6 = step6.substring(0, 15);
-
-            if (step6.charAt(step6.length() - 1) == '.') {
-                step6 = step6.substring(0, step6.length() - 1);
-            }
-        }
-
-        // 7단계
-        StringBuilder step7 = new StringBuilder(step6);
-        if (step7.length() <= 2) {
-            char last = step7.charAt(step7.length() - 1);
-
-            while (step7.length() < 3) {
-                step7.append(last);
-            }
-        }
-
-        answer = String.valueOf(step7);
         return answer;
     }
-
     public static void main(String[] args) {
-        Solution Solution = new Solution();
-        int[] a = {1, 2, 3, 4}, b = {31, 10, 45, 1, 6, 19};
-        String ab = "onetwothree";
-        String[] list = {"sun", "bed", "car"};
-        int[][] aa = {{60, 50}, {30, 70}, {60, 30}, {80, 40}};
-        System.out.println(Solution.solution(ab));
+        Solution solution = new Solution();
+        System.out.println(solution.solution(718253));
     }
 }
+
+
+
+// 포켓몬 문제
+//import java.util.*;
+//
+//class Solution {
+//    public int solution(int[] nums) {
+//        int answer = 0;
+//        List<Integer> list = new ArrayList<Integer>();
+//        list.add(nums[0]);
+//        for (int i = 0; i < nums.length; i++)
+//            if (!list.contains(nums[i]))
+//                list.add(nums[i]);
+//
+//        answer = list.size() < nums.length/2 ? list.size() : nums.length/2;
+//        return answer;
+//    }
+// 내가 했는데 틀림 왜지?
+//    public int solution(int[] nums) {
+//        int answer = 0;
+//        int[] temp = nums;
+//        temp = set(nums);
+//        answer = nums.length/2 > temp.length ? temp.length : nums.length/2;
+//        return answer;
+//    }
+//    public int[] set(int[] arr) {
+//        ArrayList<Integer> list = new ArrayList<>();
+//        int current = 10;
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] != current) {
+//                list.add(arr[i]);
+//                current = arr[i];
+//            }
+//        }
+//        int[] answer = new int[list.size()];
+//        for (int i = 0; i < list.size(); i++)
+//            answer[i] = list.get(i);
+//        return answer;
+//    }
+//
+//    public static void main(String[] args) {
+//        Solution solution = new Solution();
+//        int[] a = {3, 1, 2, 3}, b = {31, 10, 45, 1, 6, 19};
+//        String ab = "onetwothree";
+//        String[] list = {"sun", "bed", "car"};
+//        int[][] aa = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
+//        System.out.println(solution.solution(a));
+//    }
+//}
+
+
+// 최대 공약수와 최대 공배수
+//import java.util.*;
+//class Solution {
+//    public static int[] solution(int n, int m) {
+//        int[] answer = new int[2];
+//        int temp = n;
+//        if (n > m) {
+//            n = m;
+//            m = temp;
+//        }
+//        if (m % n == 0) answer[0] = n;
+//        else {
+//            for (int i = n / 2 + 1; i > 0; i -= 1) {
+//                if (n % i == 0) {
+//                    temp = i;
+//                    if (m % temp == 0) {
+//                        answer[0] = temp;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//        for (int i = 1; ; i++) {
+//            if ((m * i) % n == 0) {
+//                answer[1] = (m * i);
+//                break;
+//            }
+//        }
+//        System.out.println(answer[0] + " " + answer[1]);
+//        return answer;
+//    }
+//    // 다른사람 풀이
+//    import java.util.Arrays;
+//
+//    class TryHelloWorld {
+//        public int[] gcdlcm(int a, int b) {
+//            int[] answer = new int[2];
+//
+//            answer[0] = gcd(a,b);
+//            answer[1] = (a*b)/answer[0];
+//            return answer;
+//        }
+//
+//        public static int gcd(int p, int q)
+//        {
+//            if (q == 0) return p;
+//            return gcd(q, p%q);
+//        }
+//    }
+//}
+
+// K번째 수
+//import java.util.*;
+//import java.util.Collections;
+//class Solution {
+//    public int[] solution(int[] array, int[][] commands) {
+//        int[] answer = new int[commands.length];        // commands의 index개수만큼 답안 생성 되는 것이므로 answer크기 == commands의 크기
+//        for (int i = 0; i < commands.length; i++) {
+//            ArrayList<Integer> temp = new ArrayList<>();
+//            for (int j = commands[i][0]-1; j < commands[i][1]; j++) {       // 조건 1
+//                temp.add(array[j]);
+//            }
+//            Collections.sort(temp);                                         // 조건 2
+//            answer[i] = temp.get(commands[i][2]-1);                         // 조건 3
+//        }
+//        return answer;
+//    }
+//    import java.util.Arrays;
+//    class Solution {
+//        public int[] solution(int[] array, int[][] commands) {
+//            int[] answer = new int[commands.length];
+//
+//            for(int i=0; i<commands.length; i++){
+//                int[] temp = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
+//                Arrays.sort(temp);
+//                answer[i] = temp[commands[i][2]-1];
+//            }
+//
+//            return answer;
+//        }
+//    }
+//}
+
+// 신규 아이디 추천
+//class Solution {
+//    public String solution(String new_id) {
+//        String answer;
+//
+//        // 1단계
+//        String step1 = new_id.toLowerCase();
+//
+//        // 2단계
+//        char[] step1_arr = step1.toCharArray();
+//        StringBuilder step2 = new StringBuilder();
+//        for (char c : step1_arr) {
+//            if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '-' || c == '_' || c == '.') {
+//                step2.append(c);
+//            }
+//        }
+//
+//        // 3단계
+//        String step3 = step2.toString().replace("..", ".");
+//        while (step3.contains("..")) {
+//            step3 = step3.replace("..", ".");
+//        }
+//
+//        // 4단계
+//        String step4 = step3;
+//        if (step4.length() > 0) {
+//            if (step4.charAt(0) == '.') {
+//                step4 = step4.substring(1, step4.length());
+//            }
+//        }
+//        if (step4.length() > 0) {
+//            if (step4.charAt(step4.length() - 1) == '.') {
+//                step4 = step4.substring(0, step4.length() - 1);
+//            }
+//        }
+//
+//        // 5단계
+//        String step5 = step4;
+//        if (step5.equals("")) {
+//            step5 = "a";
+//        }
+//
+//        // 6단계
+//        String step6 = step5;
+//        if (step6.length() >= 16) {
+//            step6 = step6.substring(0, 15);
+//
+//            if (step6.charAt(step6.length() - 1) == '.') {
+//                step6 = step6.substring(0, step6.length() - 1);
+//            }
+//        }
+//
+//        // 7단계
+//        StringBuilder step7 = new StringBuilder(step6);
+//        if (step7.length() <= 2) {
+//            char last = step7.charAt(step7.length() - 1);
+//
+//            while (step7.length() < 3) {
+//                step7.append(last);
+//            }
+//        }
+//
+//        answer = String.valueOf(step7);
+//        return answer;
+//    }
+// 정규식 표현
 //    public String solution(String new_id) {
 //        String answer = new_id.toLowerCase(); // 1단계
 //
@@ -96,14 +254,6 @@ class Solution {
 //        }
 //
 //        return answer;
-//    }
-//    public static void main(String[] args) {
-//        Solution Solution = new Solution();
-//        int[] a = {1,2,3,4}, b = {31, 10, 45, 1, 6, 19};
-//        String ab = "onetwothree";
-//        String[] list = {"sun", "bed", "car"};
-//        int[][] aa = {{60, 50}, {30, 70}, {60, 30}, {80, 40}};
-//        System.out.println(Solution.solution(ab));
 //    }
 //}
 
