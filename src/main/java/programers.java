@@ -256,15 +256,15 @@ class Solution {
 //        return answer;
 //    }
 //}
-
+// 소수 만들기
 //import java.util.*;
 //class Solution {
 //    public  int solution(int[] arr){
 //        int answer = 0;
-//        for(int i = 0 ; i < arr.length-2; i++){
+//        for(int i = 0 ; i < arr.length-2; i++){         // 숫자 배열에서 3개 뽑아서 중복되는거 없이 더함
 //            for(int j = i+1 ; j<arr.length-1; j++){
 //                for(int k = j+1; k < arr.length;k++){
-//                    if(isPrime(arr[i]+arr[j]+arr[k])) {
+//                    if(isPrime(arr[i]+arr[j]+arr[k])) {         // 3 숫자의 합이 소수이면 answer++
 //                        answer += 1;
 //                    }
 //                }
@@ -273,7 +273,7 @@ class Solution {
 //        return answer;
 //    }
 //
-//    public boolean isPrime(int prime){
+//    public boolean isPrime(int prime){          // 소수인지 판별하는 함수
 //        for(int i = 2 ; i < prime/2+1; i++)
 //            if(prime % i==0)
 //                return false;
@@ -608,20 +608,20 @@ class Solution {
 //class Solution {
 //    public String solution(String s, int n) {
 //        String answer ="";
-//        char[] word = s.toCharArray();
+//        char[] word = s.toCharArray();    // 문자열의 각각의 문자를 담은 배열 생성
 //        for( char wd : word){
-//            if((96<wd && wd<123) && wd+n>'z') {
-//                answer += (char) ('a' + wd + n - 123);
-//                continue;
+//            if((96<wd && wd<123) && wd+n>'z') {           // wd가 소문자이고 wd를 n만큼 뒤로 이동했을때 z를 넘어가면
+//                answer += (char) ('a' + wd + n - 123);    // 넘어간 만큼 a에서부터 이동해라
+//                continue;                                 // 해당하면 바로 다음으로 넘김
 //            }
-//            if((64<wd &&wd<91 )&& wd+n>90) {
-//                answer += (char) ('A' + wd + n - 91);
-//                continue;
+//            if((64<wd &&wd<91 )&& wd+n>90) {              // wd가 대문자이고 wd를 n만큼 뒤로 이동했을때 Z를 넘어가면
+//                answer += (char) ('A' + wd + n - 91);     // 넘어간 만큼 A에서부터 이동해라
+//                continue;                                 // 해당하면 바로 다음으로 넘기
 //            }
-//            if(wd == ' ')
-//                answer += " ";
+//            if(wd == ' ')                                 // wd가 공백이면
+//                answer += " ";                            // 공백 생성
 //            else
-//                answer += (char) (wd + n);
+//                answer += (char) (wd + n);                // 위의 모두를 해당하지 않으면 wd를 n만큼 뒤로 이동시켜라
 //
 //        }
 //        return answer;
